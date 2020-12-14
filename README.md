@@ -63,7 +63,7 @@ After execution, console application starts with file upload and reports simple 
 
 ## Conclusion
 This demo shows how to with minimal effort upload any file to the Azure Block Blob using Azure Storage Blobs client library. Of course it's not production ready. But you can use it as a starting point for your real-world project. Enjoy!
-. 
+
 ## Prerequisites
 - [Visual Studio](https://www.visualstudio.com/vs/community) 2019 16.8.2 or greater 
 
