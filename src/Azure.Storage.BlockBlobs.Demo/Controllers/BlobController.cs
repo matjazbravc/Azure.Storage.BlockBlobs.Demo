@@ -13,13 +13,13 @@ namespace App.Controllers
     [Route("[controller]")]
     public class BlobController : ControllerBase
     {
-        private readonly IBlobStorageService _filesStorage;
+        private readonly IBlobStorageService _blobStorage;
         private readonly ILogger<BlobController> _logger;
 
-        public BlobController(ILogger<BlobController> logger, IBlobStorageService filesStorage)
+        public BlobController(ILogger<BlobController> logger, IBlobStorageService blobStorage)
         {
             _logger = logger;
-            _filesStorage = filesStorage;
+            _blobStorage = blobStorage;
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace App.Controllers
             {
                 await Request.Body.CopyToAsync(stream).ConfigureAwait(false);
                 stream.Position = 0;
-                await _filesStorage.StageBlockAsync(blobName, blockId, stream).ConfigureAwait(false);
+                await _blobStorage.StageBlockAsync(blobName, blockId, stream).ConfigureAwait(false);
             }
 
             return Ok();
@@ -55,7 +55,7 @@ namespace App.Controllers
         {
             _logger.LogDebug(nameof(CommitBlocksAsync));
             
-            await _filesStorage.CommitBlocksAsync(blobName, fileMetadata.ToStorage()).ConfigureAwait(false);
+            await _blobStorage.CommitBlocksAsync(blobName, fileMetadata.ToStorage()).ConfigureAwait(false);
             return Ok();
         }
 
@@ -68,7 +68,7 @@ namespace App.Controllers
         public async Task<IActionResult> DownloadBlobAsync(string blobName)
         {
             _logger.LogDebug(nameof(DownloadBlobAsync));
-            var data = await _filesStorage.DownloadAsync(blobName).ConfigureAwait(false);
+            var data = await _blobStorage.DownloadAsync(blobName).ConfigureAwait(false);
             return File(data.Stream, "application/force-download", data.Metadata.FileName, enableRangeProcessing: true);
         }
     }
