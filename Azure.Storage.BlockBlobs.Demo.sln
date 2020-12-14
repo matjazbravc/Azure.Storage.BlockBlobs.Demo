@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.Storage.BlockBlobs.Demo", "src\Azure.Storage.BlockBlobs.Demo\Azure.Storage.BlockBlobs.Demo.csproj", "{FE1BC88A-05F5-4C08-9F23-5514BD8C63FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{69F471FD-D577-44C9-86E1-86CE182A29CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E25204A1-DE6C-4462-8016-12B34EA1C3D6}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.ConsoleApp", "src\Client.ConsoleApp\Client.ConsoleApp.csproj", "{E19863FF-87D1-4144-9738-9DBDC74574B5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Contacts", "src\Common.Contacts\Common.Contacts.csproj", "{71D6A6EF-ABCF-4353-B971-9D24E293074E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{781E9946-8621-46DE-BFAF-21EEAFFE0EA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "webapi", "webapi", "{86578038-D492-4210-B9CE-E4EDCF1A3221}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "client", "client", "{9BE334DD-0172-47DA-BB64-6AB281168FA9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE1BC88A-05F5-4C08-9F23-5514BD8C63FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE1BC88A-05F5-4C08-9F23-5514BD8C63FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE1BC88A-05F5-4C08-9F23-5514BD8C63FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE1BC88A-05F5-4C08-9F23-5514BD8C63FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E19863FF-87D1-4144-9738-9DBDC74574B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E19863FF-87D1-4144-9738-9DBDC74574B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E19863FF-87D1-4144-9738-9DBDC74574B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E19863FF-87D1-4144-9738-9DBDC74574B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71D6A6EF-ABCF-4353-B971-9D24E293074E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71D6A6EF-ABCF-4353-B971-9D24E293074E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71D6A6EF-ABCF-4353-B971-9D24E293074E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71D6A6EF-ABCF-4353-B971-9D24E293074E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FE1BC88A-05F5-4C08-9F23-5514BD8C63FF} = {86578038-D492-4210-B9CE-E4EDCF1A3221}
+		{E19863FF-87D1-4144-9738-9DBDC74574B5} = {9BE334DD-0172-47DA-BB64-6AB281168FA9}
+		{71D6A6EF-ABCF-4353-B971-9D24E293074E} = {781E9946-8621-46DE-BFAF-21EEAFFE0EA0}
+		{781E9946-8621-46DE-BFAF-21EEAFFE0EA0} = {69F471FD-D577-44C9-86E1-86CE182A29CB}
+		{86578038-D492-4210-B9CE-E4EDCF1A3221} = {69F471FD-D577-44C9-86E1-86CE182A29CB}
+		{9BE334DD-0172-47DA-BB64-6AB281168FA9} = {69F471FD-D577-44C9-86E1-86CE182A29CB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {734C7536-66E2-4ACF-A8E4-4A84B1F84F45}
+	EndGlobalSection
+EndGlobal
