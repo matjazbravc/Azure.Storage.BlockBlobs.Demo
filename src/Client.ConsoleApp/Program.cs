@@ -1,14 +1,14 @@
-﻿namespace Client.ConsoleApp
-{
-    using Client.ConsoleApp.Configuration;
-    using Client.ConsoleApp.Services;
-    using Client.ConsoleApp.Services.Helpers;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.Options;
-    using System;
+﻿using Client.ConsoleApp.Configuration;
+using Client.ConsoleApp.Services;
+using Client.ConsoleApp.Services.Helpers;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using System;
 
+namespace Client.ConsoleApp
+{
     /// <summary>
     /// This simple client console application communicate with Azure.Storage.BlockBLobs.Demo Web API
     /// and uploads (large) file(s) to the Azure Storage Blob Container.

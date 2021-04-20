@@ -1,15 +1,15 @@
+using Azure.Storage.BlockBlobs.Demo.Configuration;
+using Azure.Storage.BlockBlobs.Demo.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
+
 namespace Azure.Storage.BlockBlobs.Demo
 {
-    using Azure.Storage.BlockBlobs.Demo.Configuration;
-    using Azure.Storage.BlockBlobs.Demo.Services;
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
-    using Microsoft.Extensions.Options;
-    using Microsoft.OpenApi.Models;
-
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -29,7 +29,7 @@ namespace Azure.Storage.BlockBlobs.Demo
             services.AddOptions();
             services.Configure<BlobStorageConfig>(Configuration.GetSection("BlobStorage"));
 
-            services.AddTransient(provider => provider.GetService<IOptions<BlobStorageConfig>>().Value);
+            services.AddTransient(provider => provider.GetService<IOptions<BlobStorageConfig>>()?.Value);
 
             services.AddSwaggerGen(c =>
             {

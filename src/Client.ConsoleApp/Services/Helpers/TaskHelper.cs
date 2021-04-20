@@ -1,11 +1,11 @@
-﻿namespace Client.ConsoleApp.Services.Helpers
-{
-    using System;
-    using System.Collections.Concurrent;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
+namespace Client.ConsoleApp.Services.Helpers
+{
     public class TaskHelper : ITaskHelper
     {
         public Task ForEachAsync<T>(IEnumerable<T> source, int partitionCount, Func<T, Task> body)

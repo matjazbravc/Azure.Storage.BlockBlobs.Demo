@@ -1,7 +1,7 @@
-﻿namespace Common.Contacts.Models
-{
-    using System;
+﻿using System;
 
+namespace Common.Contacts.Models
+{
     public class BlockMetadata
     {
         public BlockMetadata(int id, int blockSize, long fileLength)

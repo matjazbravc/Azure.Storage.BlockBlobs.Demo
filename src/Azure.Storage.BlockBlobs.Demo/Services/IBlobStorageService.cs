@@ -1,9 +1,9 @@
+using Common.Contacts.Models;
+using System.IO;
+using System.Threading.Tasks;
+
 namespace Azure.Storage.BlockBlobs.Demo.Services
 {
-    using Common.Contacts.Models;
-    using System.IO;
-    using System.Threading.Tasks;
-
     public interface IBlobStorageService
     {
         Task CreateContainerAsync();

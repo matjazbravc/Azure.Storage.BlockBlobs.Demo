@@ -1,14 +1,14 @@
-﻿namespace Client.ConsoleApp.Services
-{
-    using System;
+﻿using System;
 
+namespace Client.ConsoleApp.Services
+{
     public class UploadStatistics : IUploadStatistics
     {
         private const long GB = MB * 1024;
         private const int KB = 1024;
         private const int MB = KB * 1024;
         private readonly DateTime _initialStartTime = DateTime.UtcNow;
-        private readonly object _lock = new object();
+        private readonly object _lock = new();
         private long _completed;
         private long _totalBytes;
 
@@ -25,9 +25,9 @@
             }
 
             var kbPerSec = (blockBytes / (DateTime.UtcNow.Subtract(start).TotalSeconds * KB));
-            var MBPerMin = (blockBytes / (DateTime.UtcNow.Subtract(start).TotalMinutes * MB));
+            var mbPerMin = (blockBytes / (DateTime.UtcNow.Subtract(start).TotalMinutes * MB));
 
-            return $"Uploaded block {TotalProgress(blockId, _totalBytes)} ({Progress(_completed, _totalBytes)}) with {kbPerSec:F0} kB/sec ({MBPerMin:F1} MB/min), {EstimatedEndTime()}";
+            return $"Uploaded block {TotalProgress(blockId, _totalBytes)} ({Progress(_completed, _totalBytes)}) with {kbPerSec:F0} kB/sec ({mbPerMin:F1} MB/min), {EstimatedEndTime()}";
         }
 
         private static string Progress(long current, long total)
@@ -72,7 +72,7 @@
             var remainingSeconds = elapsedSeconds * (1 - progress) / progress;
             var remaining = TimeSpan.FromSeconds(remainingSeconds);
 
-            return string.Format("time remaining {0}, (expected end time {1})", remaining.ToString(@"hh\:mm\:ss"), now.ToLocalTime().Add(remaining));
+            return $"time remaining {remaining:hh\\:mm\\:ss}, (expected end time {now.ToLocalTime().Add(remaining)})";
         }
     }
 }

@@ -1,16 +1,16 @@
-﻿namespace Client.ConsoleApp.Services
-{
-    using Client.ConsoleApp.Extensions;
-    using Client.ConsoleApp.Services.Helpers;
-    using Common.Contacts.Models;
-    using Microsoft.Extensions.Logging;
-    using System;
-    using System.IO;
-    using System.Linq;
-    using System.Net;
-    using System.Net.Http;
-    using System.Threading.Tasks;
+﻿using Client.ConsoleApp.Extensions;
+using Client.ConsoleApp.Services.Helpers;
+using Common.Contacts.Models;
+using Microsoft.Extensions.Logging;
+using System;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 
+namespace Client.ConsoleApp.Services
+{
     public class FileUploader : IFileUploader
     {
         private readonly IRestClientHelper _restClientHelper;

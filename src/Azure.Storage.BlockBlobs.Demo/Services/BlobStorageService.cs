@@ -1,18 +1,18 @@
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using Azure.Storage.Blobs.Specialized;
+using Azure.Storage.BlockBlobs.Demo.Configuration;
+using Common.Contacts.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace Azure.Storage.BlockBlobs.Demo.Services
 {
-    using Azure.Storage.Blobs;
-    using Azure.Storage.Blobs.Models;
-    using Azure.Storage.Blobs.Specialized;
-    using Azure.Storage.BlockBlobs.Demo.Configuration;
-    using Common.Contacts.Models;
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Security.Cryptography;
-    using System.Text;
-    using System.Threading.Tasks;
-
     public class BlobStorageService : IBlobStorageService
     {
         private readonly BlobStorageConfig _blobStorageConfig;
@@ -56,23 +56,23 @@ namespace Azure.Storage.BlockBlobs.Demo.Services
         {
             var client = CreateBlockClient(blobName);
             using var md5 = MD5.Create();
-            var contentHash = md5.ComputeHash(blockData);
+            var contentHash = await md5.ComputeHashAsync(blockData);
             blockData.Seek(0, SeekOrigin.Begin);
             await client.StageBlockAsync(GetBlobBlockId(blockId), blockData, contentHash);
         }
 
         private BlockBlobClient CreateBlockClient(string blobName)
         {
-            return new BlockBlobClient(_blobStorageConfig.ConnectionString, _blobStorageConfig.ContainerName, blobName);
+            return new(_blobStorageConfig.ConnectionString, _blobStorageConfig.ContainerName, blobName);
         }
 
-        private string GetBlobBlockId(long blockId)
+        private static string GetBlobBlockId(long blockId)
         {
             var result = Convert.ToBase64String(Encoding.UTF8.GetBytes(blockId.ToString("d20")));
             return result;
         }
 
-        private IEnumerable<string> OrderBlobBlockIds(IEnumerable<string> blobBlockIds)
+        private static IEnumerable<string> OrderBlobBlockIds(IEnumerable<string> blobBlockIds)
         {
             return blobBlockIds.Select(Convert.FromBase64String)
                 .Select(Encoding.UTF8.GetString)

@@ -1,12 +1,12 @@
+using Azure.Storage.BlockBlobs.Demo.Services;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System.Threading.Tasks;
+
 namespace Azure.Storage.BlockBlobs.Demo
 {
-    using System.Threading.Tasks;
-    using Azure.Storage.BlockBlobs.Demo.Services;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
-
     public class Program
     {
         public static async Task Main(string[] args)
@@ -31,9 +31,7 @@ namespace Azure.Storage.BlockBlobs.Demo
                 var env = hostingContext.HostingEnvironment;
 
                 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                      .AddJsonFile($"appsettings.{env.EnvironmentName}.json",
-                                     optional: true, reloadOnChange: true);
-
+                      .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
 
                 config.AddEnvironmentVariables();
 

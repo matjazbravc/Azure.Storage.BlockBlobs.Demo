@@ -1,7 +1,7 @@
+using System.Collections.Generic;
+
 namespace Common.Contacts.Models
 {
-    using System.Collections.Generic;
-
     public class FileMetadata
     {
         public string FileName { get; set; }

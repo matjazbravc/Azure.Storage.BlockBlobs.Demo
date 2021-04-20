@@ -11,6 +11,5 @@ namespace Client.ConsoleApp.Configuration
         public int MaxThreads { get; set; } = 4;
 
         public int BlockSize { get; set; } = 1 * 1024 * 1024; // 1Mb
-
     }
 }

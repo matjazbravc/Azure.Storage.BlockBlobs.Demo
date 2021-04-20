@@ -1,7 +1,7 @@
-﻿namespace Client.ConsoleApp.Services
-{
-    using System;
+﻿using System;
 
+namespace Client.ConsoleApp.Services
+{
     public interface IUploadStatistics
     {
         void Initialize(long fileSize);
