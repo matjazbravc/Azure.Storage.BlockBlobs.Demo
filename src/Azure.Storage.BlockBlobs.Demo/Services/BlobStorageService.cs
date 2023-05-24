@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,10 +54,15 @@ namespace Azure.Storage.BlockBlobs.Demo.Services
         public async Task StageBlockAsync(string blobName, long blockId, Stream blockData)
         {
             var client = CreateBlockClient(blobName);
-            using var md5 = MD5.Create();
-            var contentHash = await md5.ComputeHashAsync(blockData);
             blockData.Seek(0, SeekOrigin.Begin);
-            await client.StageBlockAsync(GetBlobBlockId(blockId), blockData, contentHash);
+            // Read more: https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Blobs/AzureStorageNetMigrationV12.md
+            await client.StageBlockAsync(GetBlobBlockId(blockId), blockData, new BlockBlobStageBlockOptions
+            {
+                TransferValidation = new UploadTransferValidationOptions
+                {
+                    ChecksumAlgorithm = StorageChecksumAlgorithm.MD5
+                }
+            });
         }
 
         private BlockBlobClient CreateBlockClient(string blobName)
